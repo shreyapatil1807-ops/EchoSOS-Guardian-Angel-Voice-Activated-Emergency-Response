@@ -1,6 +1,7 @@
 # EchoSOS: Guardian Angel – Voice-Activated Emergency Response
 
-EchoSOS is a web-based voice-activated emergency response system designed to enhance personal safety by allowing users to trigger SOS alerts using simple voice commands. This project demonstrates the power of building responsive, interactive, and user-friendly web applications using modern web development technologies.
+**EchoSOS** is a web-based voice-activated emergency response system designed to enhance personal safety by allowing users to trigger SOS alerts using simple voice commands. This project demonstrates the power of building responsive, interactive, and user-friendly web applications using modern web development technologies.
+
 
 ---
 
