@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guardian Angel SOS - Sign Up</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #e63946;
+    }
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      width: 350px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    .container h2 { color: #e63946; margin-bottom: 20px; }
+    .input-box { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc; }
+    .btn { width: 100%; padding: 12px; background: #e63946; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; }
+    .btn:hover { background: #c82333; }
+    .link { margin-top: 15px; display: block; color: #e63946; text-decoration: none; font-size: 14px; }
+    .link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Create Account</h2>
+    <form onsubmit="return signupUser(event)">
+      <input type="text" id="name" placeholder="Full Name" class="input-box" required>
+      <input type="email" id="email" placeholder="Email Address" class="input-box" required>
+      <input type="password" id="password" placeholder="Password" class="input-box" required>
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" class="input-box" required>
+      <button type="submit" class="btn">Sign Up</button>
+      <a href="login.html" class="link">Already have an account? Login</a>
+    </form>
+  </div>
+
+  <script>
+    function signupUser(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value.toLowerCase();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match ❌");
+        return false;
+      }
+
+      // Get existing users from localStorage
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+
+      // Check if email already exists
+      if (users.some(u => u.email === email)) {
+        alert("Email already registered ❌");
+        return false;
+      }
+
+      // Add new user
+      users.push({ name, email, password });
+      localStorage.setItem('users', JSON.stringify(users));
+
+      alert(`Account created for ${name} ✅`);
+      window.location.href = "login.html";
+      return true;
+    }
+  </script>
+</body>
+</html>
